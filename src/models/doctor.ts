@@ -26,9 +26,8 @@ const doctorSchema = new Schema({
 
 // Add data encryption to Password before save operations
 doctorSchema.pre('save', function (next) {
-  const u = this;
-  bcrypt.hash(u.password, 10, (error, hash) => {
-    u.password = hash;
+  bcrypt.hash(this.password, 10, (error, hash) => {
+    this.password = hash;
     next();
   });
 });
