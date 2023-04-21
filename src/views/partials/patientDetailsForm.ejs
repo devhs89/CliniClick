@@ -1,0 +1,102 @@
+<div id="patientDetailsFormWrapper">
+  <div class="row">
+    <div class="col-12 col-md-6 mb-3">
+      <div class="input-group">
+        <label for="serviceType" class="input-group-text">Service Type</label>
+        <select name="serviceType" id="serviceType" class="form-select form-select-lg">
+          <option value="1">Video Consultation</option>
+          <option value="2">Phone Consultation</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 mb-3">
+      <div class="input-group">
+        <label for="healthCard" class="input-group-text">Health Card</label>
+        <select name="healthCard" id="healthCard" class="form-select form-select-lg">
+          <option value="1">Manitoba Health</option>
+          <option value="2">Ontario Health</option>
+          <option value="3">Saskatchewan Health</option>
+          <option value="3">British Columbia Health</option>
+          <option value="3">Alberta Health</option>
+          <option value="3">Other</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 mb-3">
+      <div class="form-floating">
+        <input type="email" name="email" value="" id="email" class="form-control" placeholder="e.g. john@email.com">
+        <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 mb-3">
+      <div class="form-floating">
+        <input type="password" name="password" value="" id="password" class="form-control"
+               placeholder="Must be 8 or more alphanumeric characters">
+        <label for="password">Password</label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-4 mb-3">
+      <div class="form-floating">
+        <input type="text" name="firstName" value="" id="firstName" class="form-control" placeholder="e.g. John">
+        <label for="firstName">Firstname</label>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 mb-3">
+      <div class="form-floating">
+        <input type="text" name="lastName" value="" id="lastName" class="form-control" placeholder="e.g. Smith">
+        <label for="lastName">Lastname</label>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 mb-3">
+      <div class="form-floating">
+        <input type="date" name="dob" value="" id="dob" class="form-control"
+               placeholder="e.g. 22/01/1999">
+        <label for="dob">Date of birth</label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-4 mb-3">
+      <div class="form-floating">
+        <input type="number" name="phone" value="" id="phone" class="form-control"
+               placeholder="e.g. 1-444-333-2222">
+        <label for="phone">Phone</label>
+      </div>
+    </div>
+    <div class="col-12 col-md-8 mb-3">
+      <div class="form-floating">
+        <input type="text" name="address" value="" id="address" class="form-control"
+               placeholder="e.g. 1 Some St, Suburb, Province A1A 1A1">
+        <label for="address">Address</label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 mb-3">
+      <div class="form-floating">
+        <select name="prefDoctor" id="prefDoctor" class="form-select form-select-lg">
+          <option value="0">No doctors found</option>
+        </select>
+        <label for="prefDoctor">Preferred Doctor</label>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 mb-3">
+      <div class="form-floating">
+        <select name="prefContactMethod" id="prefContactMethod" class="form-select form-select-lg">
+          <option value="1">Phone</option>
+          <option value="2">Email</option>
+        </select>
+        <label for="prefContactMethod">Preferred Contact</label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <button type="button" class="btn btn-lg btn-dark px-4 appointmentNextBtn" id="patientDetailsNextBtn">Next</button>
+    </div>
+  </div>
+</div>

@@ -8,7 +8,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import expressSession from 'express-session';
 import dbContext from './data/dbContext';
-import {viewRoutes} from "./routes";
+import {partialViewsRoutes, router, viewRoutes} from "./routes";
 import path from "path";
 
 // Create Express Application
@@ -23,6 +23,7 @@ app.set('views', path.resolve('src', 'views'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSession({secret: process.env.SESSION_TOKEN}));
+app.use(router);
 
 // Server listening on specified port
 app.listen(port, () => {
@@ -30,7 +31,8 @@ app.listen(port, () => {
 });
 
 // Application Routes
-viewRoutes(app);
+partialViewsRoutes();
+viewRoutes();
 
 // Make database connection
 dbContext().then(r => r);
