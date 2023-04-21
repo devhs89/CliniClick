@@ -4,5 +4,5 @@
   ],
   "ext": ".ts,.js, .scss, .ejs",
   "ignore": [],
-  "exec": "sass src/styles/main.scss:public/css/main.css --style compressed && npx tsc && node dist/app.js"
+  "exec": "npx tsc && node dist/app.js"
 }

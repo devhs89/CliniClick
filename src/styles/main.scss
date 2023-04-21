@@ -1,12 +1,12 @@
 // Override default variable here
-$primary: #dcd6f7;
-$secondary: #191D32;
-$success: #06D6A0;
-$info: #76E5FC;
+$primary: #DCF763;
+$secondary: #989C94;
+$success: #18FF6D;
 $warning: #FFD166;
-$danger: #EF476F;
-$light: #f9f9f9;
-$dark: #202020;
+$danger: #EC4E20;
+$info: #90FCF9;
+$light: #FBFBFF;
+$dark: #011627;
 
 $theme-colors: (
     "primary": $primary,
@@ -22,5 +22,8 @@ $theme-colors: (
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 html, body {
- background-color: $light !important;
+ background-color: $light;
+ color: $dark;
+ font-size: 1rem;
+ font-family: 'Montserrat', sans-serif;
 }

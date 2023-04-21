@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon",
     "lint": "eslint . --ext .ts",
-    "css-compile": ""
+    "css-compile": "sass src/styles/main.scss:public/css/main.css --style compressed"
   },
   "repository": {
     "type": "git",
