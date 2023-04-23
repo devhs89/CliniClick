@@ -1,4 +1,4 @@
-window.onload = function () {
+window.addEventListener('load', () => {
   const navBtnEleArr = document.querySelectorAll('.navBtn');
 
   const showLoginBtn = () => {
@@ -20,4 +20,4 @@ window.onload = function () {
   window.addEventListener('resize', () => {
     showLoginBtn();
   });
-};
+});

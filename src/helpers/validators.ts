@@ -9,5 +9,5 @@ export const passwordValidator = (val) => {
 };
 
 export const phoneValidator = (val) => {
-  return /^\+\d{1}-\d{3}-\d{3}-\d{4}$/.test(val);
+  return /^\+\d{1}-\d{3}-\d{3}-\d{4}$/.test(val) || !val;
 };

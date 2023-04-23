@@ -5,6 +5,7 @@ export const responseMsg = {
   invalidRepeatPassword: "Repeat password must match password",
   invalidCred: "Invalid username or password",
   userNotFound: "User not found",
+  userAlreadyExists: "Email is already associated to an account",
   bookingNotFound: "No booking information found",
   insertFailed: "Failed to insert records",
   internalServerError: "Internal Server Error. Please try again later.",

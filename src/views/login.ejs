@@ -1,0 +1,48 @@
+<html lang="en">
+<!--HEADER-->
+<%- include('layouts/header'); -%>
+<body class="d-flex flex-column vh-100">
+<!--NAVBAR-->
+<%- include('layouts/navbar') -%>
+<!--MAIN CONTENT-->
+<main class="flex-grow-1">
+  <div class="container my-5">
+    <div class="w-md-75 w-lg-50 mx-auto">
+      <div class="row">
+        <div class="col-12 mb-4"><h1 class="display-5">Login</h1></div>
+      </div>
+      <div class="row text-dark">
+        <div class="col-12 mb-3">
+          <span>Not a user? </span><a href="/register" class="link-dark">Register Now</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="email" name="email"
+                   placeholder="e.g. name@domain.com"
+                   required>
+            <label for="email">Email</label>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-floating mb-4">
+            <input type="password" class="form-control" id="password" name="password"
+                   placeholder="e.g. Must include A-Z a-z 0-9"
+                   required>
+            <label for="password">Password</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <button type="submit" class="btn btn-dark px-5" id="loginBtn">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<!--FOOTER-->
+<%- include('layouts/footer') -%>
+</body>
+</html>
