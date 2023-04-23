@@ -1,32 +1,22 @@
 import express from 'express';
-import path from 'path';
+import * as appointmentController from "./controllers/appointmentController";
+import * as patientController from "./controllers/patientController";
+import * as prescriptionController from "./controllers/prescriptionController";
 
-export const router = express.Router();
+const router = express.Router();
 
 // Controller Routes
-// export const controllerRoutes = app => {
-// };
-
-// Partial Views Routes
-export const partialViewsRoutes = () => {
-  router.get('/partials/patient-view', (req, res, next) => {
-    const options = {
-      root: path.join(__dirname, 'views/partials'),
-      dotfiles: 'deny'
-    };
-    res.sendFile('patientDetailsForm.ejs', options, function (err) {
-      if (err) {
-        next(err);
-      }
-    });
-  });
-};
+router.post('/appointment/facilities', appointmentController.showFacilities);
+router.post('/appointment/doctors', appointmentController.showDoctors);
+router.post('/appointment/save', appointmentController.save);
+router.post('/patient/save', patientController.save);
+router.post('/prescription/show-all', prescriptionController.showAll);
 
 // View Routes
-export const viewRoutes = () => {
-  router.get('/appointment', (req, res) => res.render('appointment'));
+router.get('/appointment', (req, res) => res.render('appointment'));
+router.get('/prescription', (req, res) => res.render('prescription'));
+router.get('/home', (req, res) => res.render('index'));
+router.get('/', (req, res) => res.render('index'));
+router.use('*', (req, res) => res.render('404'));
 
-  router.get('/', (req, res) => res.render('index'));
-
-  router.use('*', (req, res) => res.render('404'));
-};
+export {router};

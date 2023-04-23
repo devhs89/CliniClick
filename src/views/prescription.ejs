@@ -1,0 +1,23 @@
+<html lang="en">
+<!--HEADER-->
+<head>
+  <%- include('layouts/header'); %>
+  <title><%= locals.docTitle || 'CliniClick'; %></title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+<!--NAVBAR-->
+<%- include('layouts/navbar') %>
+<!--MAIN CONTENT-->
+<main class="flex-grow-1">
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-12 mb-4"><h1 class="display-5">Prescriptions</h1></div>
+    </div>
+    <div id="prescriptionFormWrapper">
+    </div>
+  </div>
+</main>
+<!--FOOTER-->
+<%- include('layouts/footer') %>
+</body>
+</html>

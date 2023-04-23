@@ -1,5 +1,5 @@
 window.onload = function () {
-  const navBtnEleArr = document.querySelectorAll('.nav-btn');
+  const navBtnEleArr = document.querySelectorAll('.navBtn');
 
   const showLoginBtn = () => {
     if (window.innerWidth > 992) {
@@ -17,7 +17,7 @@ window.onload = function () {
   showLoginBtn();
 
   // Listen to window resize event afterward to toggle between login button and link
-  window.addEventListener('resize', (evt) => {
+  window.addEventListener('resize', () => {
     showLoginBtn();
   });
 };

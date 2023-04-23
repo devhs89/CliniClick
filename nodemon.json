@@ -4,5 +4,5 @@
   ],
   "ext": ".ts,.js, .scss, .ejs",
   "ignore": [],
-  "exec": "npx tsc && cp -r ./src/views/ ./dist/ && node dist/app.js"
+  "exec": "npm run lint && npx tsc && npm run copy-rest && node ./dist/app.js"
 }

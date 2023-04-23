@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon",
     "lint": "eslint . --ext .ts",
-    "css-compile": "sass src/styles/main.scss:public/css/main.css --style compressed"
+    "css-compile": "sass src/styles/main.scss:public/css/main.css --style compressed",
+    "copy-rest": "mkdir -p ./dist/views ./dist/public && cp -r ./src/views/* ./dist/views/ && cp -r ./public/* ./dist/public/"
   },
   "repository": {
     "type": "git",

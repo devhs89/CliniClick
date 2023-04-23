@@ -14,19 +14,25 @@ const patientSchema = new Schema({
   password: {
     type: String, required: true, validate: {validator: passwordValidator, message: responseMsg.invalidPassword}
   },
-  phone: {type: Number, unique: true, validate: {validator: phoneValidator, message: responseMsg.invalidPhone}},
-  firstName: {type: String},
-  lastName: {type: String},
-  dob: {type: Date},
+  phone: {type: String, unique: true, validate: {validator: phoneValidator, message: responseMsg.invalidPhone}},
+  firstName: {type: String, required: true},
+  lastName: {type: String, required: true},
   address: {type: String, required: true},
-  prefContactMethod: {type: String, required: true},
-  prefDoctor: {type: Schema.Types.ObjectId, ref: 'Doctor'}
+  dob: {type: Date}
 });
 
 // Add data encryption to Password before save operations
 patientSchema.pre('save', function (next) {
   bcrypt.hash(this.password, 10, (error, hash) => {
     this.password = hash;
+    next();
+  });
+});
+
+// Add data encryption to Password before update operations
+patientSchema.pre('findOneAndUpdate', function (next) {
+  bcrypt.hash(this['_update'].password, 10, (error, hash) => {
+    this['_update'].password = hash;
     next();
   });
 });

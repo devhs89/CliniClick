@@ -11,13 +11,155 @@
 <main class="flex-grow-1">
   <div class="container my-5">
     <div class="row">
-      <div class="col-12 mb-4"><h1 class="display-5">Book Appointment</h1></div>
+      <div class="col-12 mb-4"><h1 class="display-5">Appointment</h1></div>
     </div>
-    <div id="appointmentFormWrapper"></div>
+    <div id="appointmentFormWrapper">
+      <div class="row">
+        <div class="col-12 mb-2"><h5>Booking Details</h5></div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6 mb-3">
+          <div class="input-group">
+            <label for="bookingDate" class="input-group-text">Date</label>
+            <input type="datetime-local" name="bookingDate" id="bookingDate" class="form-control" required>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+          <div class="input-group">
+            <label for="healthCard" class="input-group-text">Health Card</label>
+            <select name="healthCard" id="healthCard" class="form-select" required>
+              <option value="alberta">Alberta Health</option>
+              <option value="british_columbia">British Columbia Health</option>
+              <option value="manitoba">Manitoba Health</option>
+              <option value="ontario" selected>Ontario Health</option>
+              <option value="saskatchewan">Saskatchewan Health</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6 mb-3">
+          <div class="input-group">
+            <label for="clinic" class="input-group-text">Clinic</label>
+            <select name="clinic" id="clinic" class="form-select" required>
+              <option value="none" disabled readonly selected aria-selected="true">Select one</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+          <div class="input-group">
+            <label for="prefDoctor" class="input-group-text">Preferred Doctor</label>
+            <select name="prefDoctor" id="prefDoctor" class="form-select" required>
+              <option value="none" selected aria-selected="true">No preference</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6 mb-3">
+          <div class="input-group">
+            <label for="serviceType" class="input-group-text">Service Type</label>
+            <select name="serviceType" id="serviceType" class="form-select" required>
+              <option value="video" selected>Video Consultation</option>
+              <option value="phone">Phone Consultation</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+          <div class="input-group">
+            <label for="prefContactMethod" class="input-group-text">Preferred Contact</label>
+            <select name="prefContactMethod" id="prefContactMethod" class="form-select" required>
+              <option value="email" selected>Email</option>
+              <option value="phone">Phone</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 mt-4 mb-2"><h5>Patient Details</h5></div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6 mb-3">
+          <div class="form-floating">
+            <input type="email" name="email" value="" id="email" class="form-control" placeholder="e.g. john@email.com"
+                   required>
+            <label for="email">Email</label>
+          </div>
+          <div class="mx-1 mt-1">
+            <small class="input-feedback">e.g. john@email.com</small></div>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+          <div class="form-floating">
+            <input type="password" name="password" value="" id="password" class="form-control"
+                   placeholder="Must be 8 or more alphanumeric characters" required>
+            <label for="password">Password</label>
+          </div>
+          <div class="mx-1 mt-1">
+            <small class="input-feedback">Must be 8 or more alphanumeric (no specials) characters</small>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-4 mb-3">
+          <div class="form-floating">
+            <input type="text" name="firstName" value="" id="firstName" class="form-control" placeholder="e.g. John"
+                   required>
+            <label for="firstName">Firstname</label>
+          </div>
+          <div class="mx-1 mt-1">
+            <small class="input-feedback">e.g. John</small></div>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+          <div class="form-floating">
+            <input type="text" name="lastName" value="" id="lastName" class="form-control" placeholder="e.g. Smith"
+                   required>
+            <label for="lastName">Lastname</label>
+          </div>
+          <div class="mx-1 mt-1">
+            <small class="input-feedback">e.g. Smith</small></div>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+          <div class="form-floating">
+            <input type="date" name="dob" value="" id="dob" class="form-control"
+                   placeholder="e.g. 22/01/1999">
+            <label for="dob">Date of birth</label>
+          </div>
+          <div class="mx-1 mt-1">
+            <small class="input-feedback">e.g. 22/01/1999</small></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-4 mb-3">
+          <div class="form-floating">
+            <input type="text" name="phone" value="" id="phone" class="form-control"
+                   placeholder="e.g. +1-444-333-2222" required>
+            <label for="phone">Phone</label>
+          </div>
+          <div class="mx-1 mt-1">
+            <small class="input-feedback">e.g. +1-444-333-2222</small></div>
+        </div>
+        <div class="col-12 col-md-8 mb-3">
+          <div class="form-floating">
+            <input type="text" name="address" value="" id="address" class="form-control"
+                   placeholder="e.g. 1 Some St, Suburb, Province A1A 1A1" required>
+            <label for="address">Address</label>
+          </div>
+          <div class="mx-1 mt-1">
+            <small class="input-feedback">e.g. 1 Some St, Suburb, Province A1A 1A1</small></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <button type="button" class="btn btn-lg btn-dark px-4 appointmentBookBtn" id="patientDetailsBookBtn">Book
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
 <!--FOOTER-->
 <%- include('layouts/footer') %>
-<script src="/js/appointment.js" type="text/javascript"></script>
+<script src="/js/appointment.js" crossorigin="anonymous"></script>
 </body>
 </html>

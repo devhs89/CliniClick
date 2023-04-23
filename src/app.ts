@@ -8,8 +8,9 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import expressSession from 'express-session';
 import dbContext from './data/dbContext';
-import {partialViewsRoutes, router, viewRoutes} from "./routes";
+import {router} from "./routes";
 import path from "path";
+import {seedDoctors, seedFacilities} from "./data/initialSeed";
 
 // Create Express Application
 const app = express();
@@ -30,9 +31,9 @@ app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });
 
-// Application Routes
-partialViewsRoutes();
-viewRoutes();
+// Database connection
+const _db = dbContext();
 
-// Make database connection
-dbContext().then(r => r);
+// Seed data
+const _sf = seedFacilities();
+const _sd = seedDoctors();

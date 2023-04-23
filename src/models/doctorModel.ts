@@ -14,14 +14,13 @@ const doctorSchema = new Schema({
   password: {
     type: String, required: true, validate: {validator: passwordValidator, message: responseMsg.invalidPassword}
   },
-  phone: {type: Number, unique: true, validate: {validator: phoneValidator, message: responseMsg.invalidPhone}},
+  phone: {type: String, unique: true, validate: {validator: phoneValidator, message: responseMsg.invalidPhone}},
   license: {type: String, unique: true, required: true},
   specialization: {type: String, required: true},
   firstName: {type: String},
   lastName: {type: String},
   dob: {type: Date},
-  prefContactMethod: {type: String, required: true},
-  patients: {type: [Schema.Types.ObjectId], ref: 'Patient'}
+  patients: [{type: Schema.Types.ObjectId, ref: 'Patient'}]
 });
 
 // Add data encryption to Password before save operations
