@@ -16,6 +16,7 @@ router.post('/patient/save', patientController.save);
 router.post('/prescription/show-all', prescriptionController.showAll);
 
 // View Routes
+router.get('/logout', accountController.logout);
 router.get('/register', (req, res) => res.render('register'));
 router.get('/login', (req, res) => res.render('login'));
 router.get('/appointment', (req, res) => res.render('appointment'));

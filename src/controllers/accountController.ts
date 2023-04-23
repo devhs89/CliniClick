@@ -1,6 +1,8 @@
 import {accountModel} from "../models/accountModel";
+import bcrypt from 'bcrypt';
+import {responseMsg} from "../constants/responseMsg";
 
-export const register = async (req, res, next) => {
+export const register = async (req, res) => {
   const payload = {
     email: req.body.email,
     password: req.body.password,
@@ -12,17 +14,36 @@ export const register = async (req, res, next) => {
   };
 
   await accountModel.create(payload).then(resp => {
-    res.send('/login');
-  }).catch(next);
+    res.redirect('login');
+  }).catch(err => {
+    res.render('register', {resp: err});
+  });
 };
 
-export const login = async (req, res, next) => {
+export const login = async (req, res) => {
   const payload = {
     email: req.body.email,
     password: req.body.password
   };
 
-  await accountModel.findOne(payload.email).then(resp => {
-    res.send({success: {_id: resp.id}});
-  }).catch(next);
+  await accountModel.findOne({email: payload.email}).then(resp => {
+    bcrypt.compare(payload.password, resp.password, (err, match) => {
+      if (match) {
+        req.session.userId = resp._id;
+        req.session.email = resp.email;
+        res.redirect('home');
+      } else {
+        res.render('login', {resp: responseMsg.userNotFound});
+      }
+    });
+  }).catch(err => {
+    res.render('login', {resp: err});
+  });
+};
+
+// Logout Action
+export const logout = (req, res) => {
+  req.session.destroy(() => {
+    res.redirect('/');
+  });
 };

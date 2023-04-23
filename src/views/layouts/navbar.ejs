@@ -20,7 +20,7 @@
           <a class="nav-link" href="/about">About</a>
         </li>
         <!-- Only show selective navigation links when user is logged in -->
-        <% if (locals.isLogged) { %>
+        <% if (locals?.session?.userId) { %>
           <li class="nav-item">
             <a class="nav-link navBtn" href="/logout">Logout</a>
           </li>

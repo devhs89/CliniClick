@@ -11,6 +11,7 @@ import dbContext from './data/dbContext';
 import {router} from "./routes";
 import path from "path";
 import {seedDoctors, seedFacilities} from "./data/initialSeed";
+import {sessionBroadcaster} from "./interceptors/sessionBroadcaster";
 
 // Create Express Application
 const app = express();
@@ -23,7 +24,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.resolve('src', 'views'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(expressSession({secret: process.env.SESSION_TOKEN}));
+app.use(expressSession({name: 'cliniClick', secret: process.env.SESSION_TOKEN}));
+app.use(sessionBroadcaster);
 app.use(router);
 
 // Server listening on specified port

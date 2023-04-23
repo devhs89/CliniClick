@@ -8,37 +8,49 @@
 <main class="flex-grow-1">
   <div class="container my-5">
     <div class="w-md-75 w-lg-50 mx-auto">
-      <div class="row">
-        <div class="col-12 mb-4"><h1 class="display-5">Login</h1></div>
-      </div>
-      <div class="row text-dark">
-        <div class="col-12 mb-3">
-          <span>Not a user? </span><a href="/register" class="link-dark">Register Now</a>
+      <form method="post" action="/login">
+        <div class="row">
+          <div class="col-12 mb-4"><h1 class="display-5">Login</h1></div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="email" name="email"
-                   placeholder="e.g. name@domain.com"
-                   required>
-            <label for="email">Email</label>
+        <div class="row text-dark">
+          <div class="col-12 mb-3">
+            <span>Not a user? </span><a href="/register" class="link-dark">Register Now</a>
           </div>
         </div>
-        <div class="col-12">
-          <div class="form-floating mb-4">
-            <input type="password" class="form-control" id="password" name="password"
-                   placeholder="e.g. Must include A-Z a-z 0-9"
-                   required>
-            <label for="password">Password</label>
+        <% if (locals?.resp) { %>
+          <div class="row text-start">
+            <div class="col-12 mb-3">
+              <div id="feedback-wrapper" class="w-100 text-start py-2 px-3 text-bg-dark rounded">
+              <span class="mb-1"><i
+                    class="fa-solid fa-hand-point-right me-2"></i><%= locals.resp %></span>
+              </div>
+            </div>
+          </div>
+        <% } %>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="email" name="email"
+                     placeholder="e.g. name@domain.com"
+                     required>
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-floating mb-4">
+              <input type="password" class="form-control" id="password" name="password"
+                     placeholder="e.g. Must include A-Z a-z 0-9"
+                     required>
+              <label for="password">Password</label>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <button type="submit" class="btn btn-dark px-5" id="loginBtn">Login</button>
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" class="btn btn-dark px-5" id="loginBtn">Login</button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </main>

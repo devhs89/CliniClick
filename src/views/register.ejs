@@ -8,94 +8,109 @@
 <main class="flex-grow-1">
   <div class="container my-5">
     <div class="mx-auto">
-      <div class="row">
-        <div class="col-12 mb-4"><h1 class="display-5">Register</h1></div>
-      </div>
-      <div class="row mb-3 text-dark">
-        <div class="col-12">
-          <span>Already a user? </span><a href="/login" class="link-dark">Login</a>
+      <form method="post" action="/register">
+        <div class="row">
+          <div class="col-12 mb-4"><h1 class="display-5">Register</h1></div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-md-6 mb-3">
-          <div class="form-floating">
-            <input type="email" name="email" value="" id="email" class="form-control" placeholder="e.g. john@email.com"
-                   required>
-            <label for="email">Email *</label>
-          </div>
-          <div class="mx-1 mt-1">
-            <small class="input-feedback">e.g. john@email.com</small></div>
-        </div>
-        <div class="col-12 col-md-6 mb-3">
-          <div class="form-floating">
-            <input type="password" name="password" value="" id="password" class="form-control"
-                   placeholder="Must be 8 or more alphanumeric characters" required>
-            <label for="password">Password *</label>
-          </div>
-          <div class="mx-1 mt-1">
-            <small class="input-feedback">Must be 8 or more alphanumeric (no specials) characters</small>
+        <div class="row mb-3 text-dark">
+          <div class="col-12">
+            <span>Already a user? </span><a href="/login" class="link-dark">Login</a>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-md-4 mb-3">
-          <div class="form-floating">
-            <input type="text" name="firstName" value="" id="firstName" class="form-control" placeholder="e.g. John"
-                   required>
-            <label for="firstName">Firstname *</label>
+        <% if (locals?.resp) { %>
+          <div class="row text-start">
+            <div class="col-12 mb-3">
+              <div id="feedback-wrapper" class="w-100 text-start py-2 px-3 text-bg-dark rounded">
+              <span class="mb-1"><i
+                    class="fa-solid fa-hand-point-right me-2"></i><%= locals.resp %></span>
+              </div>
+            </div>
           </div>
-          <div class="mx-1 mt-1">
-            <small class="input-feedback">e.g. John</small></div>
-        </div>
-        <div class="col-12 col-md-4 mb-3">
-          <div class="form-floating">
-            <input type="text" name="lastName" value="" id="lastName" class="form-control" placeholder="e.g. Smith"
-                   required>
-            <label for="lastName">Lastname *</label>
+        <% } %>
+        <div class="row">
+          <div class="col-12 col-md-6 mb-3">
+            <div class="form-floating">
+              <input type="email" name="email" value="learn.hs89@gmail.com" id="email" class="form-control"
+                     placeholder="e.g. john@email.com"
+                     required>
+              <label for="email">Email *</label>
+            </div>
+            <div class="mx-1 mt-1">
+              <small class="input-feedback">e.g. john@email.com</small></div>
           </div>
-          <div class="mx-1 mt-1">
-            <small class="input-feedback">e.g. Smith</small></div>
-        </div>
-        <div class="col-12 col-md-4 mb-3">
-          <div class="form-floating">
-            <input type="date" name="dob" value="" id="dob" class="form-control"
-                   placeholder="e.g. 22/01/1999">
-            <label for="dob">Date of birth</label>
+          <div class="col-12 col-md-6 mb-3">
+            <div class="form-floating">
+              <input type="password" name="password" value="Xyz12345" id="password" class="form-control"
+                     placeholder="Must be 8 or more alphanumeric characters" required>
+              <label for="password">Password *</label>
+            </div>
+            <div class="mx-1 mt-1">
+              <small class="input-feedback">Must be 8 or more alphanumeric (no specials) characters</small>
+            </div>
           </div>
-          <div class="mx-1 mt-1">
-            <small class="input-feedback">e.g. 22/01/1999</small></div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-md-4 mb-3">
-          <div class="form-floating">
-            <input type="text" name="phone" value="" id="phone" class="form-control"
-                   placeholder="e.g. +1-444-333-2222">
-            <label for="phone">Phone</label>
+        <div class="row">
+          <div class="col-12 col-md-4 mb-3">
+            <div class="form-floating">
+              <input type="text" name="firstName" value="Harpreet" id="firstName" class="form-control"
+                     placeholder="e.g. John"
+                     required>
+              <label for="firstName">Firstname *</label>
+            </div>
+            <div class="mx-1 mt-1">
+              <small class="input-feedback">e.g. John</small></div>
           </div>
-          <div class="mx-1 mt-1">
-            <small class="input-feedback">e.g. +1-444-333-2222</small></div>
-        </div>
-        <div class="col-12 col-md-8 mb-4">
-          <div class="form-floating">
-            <input type="text" name="address" value="" id="address" class="form-control"
-                   placeholder="e.g. 1 Some St, Suburb, Province A1A 1A1">
-            <label for="address">Address</label>
+          <div class="col-12 col-md-4 mb-3">
+            <div class="form-floating">
+              <input type="text" name="lastName" value="Singh" id="lastName" class="form-control"
+                     placeholder="e.g. Smith"
+                     required>
+              <label for="lastName">Lastname *</label>
+            </div>
+            <div class="mx-1 mt-1">
+              <small class="input-feedback">e.g. Smith</small></div>
           </div>
-          <div class="mx-1 mt-1">
-            <small class="input-feedback">e.g. 1 Some St, Suburb, Province A1A 1A1</small></div>
+          <div class="col-12 col-md-4 mb-3">
+            <div class="form-floating">
+              <input type="date" name="dob" value="1999-01-22" id="dob" class="form-control"
+                     placeholder="e.g. 22/01/1999">
+              <label for="dob">Date of birth</label>
+            </div>
+            <div class="mx-1 mt-1">
+              <small class="input-feedback">e.g. 22/01/1999</small></div>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <button type="submit" class="btn btn-dark px-5" id="registerBtn">Register</button>
+        <div class="row">
+          <div class="col-12 col-md-4 mb-3">
+            <div class="form-floating">
+              <input type="text" name="phone" value="+1-444-333-2222" id="phone" class="form-control"
+                     placeholder="e.g. +1-444-333-2222">
+              <label for="phone">Phone</label>
+            </div>
+            <div class="mx-1 mt-1">
+              <small class="input-feedback">e.g. +1-444-333-2222</small></div>
+          </div>
+          <div class="col-12 col-md-8 mb-4">
+            <div class="form-floating">
+              <input type="text" name="address" value="1 Some St, Suburb, Province A1A 1A1" id="address"
+                     class="form-control"
+                     placeholder="e.g. 1 Some St, Suburb, Province A1A 1A1">
+              <label for="address">Address</label>
+            </div>
+            <div class="mx-1 mt-1">
+              <small class="input-feedback">e.g. 1 Some St, Suburb, Province A1A 1A1</small></div>
+          </div>
         </div>
-      </div>
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" class="btn btn-dark px-5" id="registerBtn">Register</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </main>
 <!--FOOTER-->
 <%- include('layouts/footer') -%>
-<script src="/js/register.js" crossorigin="anonymous"></script>
 </body>
 </html>
