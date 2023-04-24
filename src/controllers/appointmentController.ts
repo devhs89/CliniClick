@@ -1,41 +1,42 @@
-import {appointmentModel} from "../models/appointmentModel";
 import {facilityModel} from "../models/facilityModel";
 import {doctorModel} from "../models/doctorModel";
-import {patientModel} from "../models/patientModel";
+import {accountModel} from "../models/accountModel";
+import {appointmentModel} from "../models/appointmentModel";
+import {responseMsg} from "../constants/responseMsg";
 
-export const showFacilities = async (req, res, next) => {
-  await facilityModel.find({}, "_id name")
-    .then(docs => res.send(docs))
-    .catch(next);
+export const retrieveEntities = async (req, res) => {
+  const facilities = await facilityModel.find({}, "_id name")
+    .then(docs => docs)
+    .catch(err => res.render('appointment', {resp: err}));
+
+  const doctors = await doctorModel.find({}, "_id firstName lastName")
+    .then(docs => docs)
+    .catch(err => res.render('appointment', {resp: err}));
+
+  res.render('appointment', {facilities: JSON.stringify(facilities), doctors: JSON.stringify(doctors)});
 };
 
-export const showDoctors = async (req, res, next) => {
-  await doctorModel.find({}, "_id firstName lastName")
-    .then(docs => res.send(docs))
-    .catch(next);
-};
-
-export const save = async (req, res, next) => {
+export const save = async (req, res) => {
   const payload = {
-    patientId: req.body.patientId,
+    patientId: req.body.appointmentBookBtn,
     bookingDate: req.body.bookingDate,
     healthCard: req.body.healthCard,
     clinic: req.body.clinic,
-    prefDoctor: !req.body.prefDoctor || req.body.prefDoctor === 'none' ? null : req.body.prefDoctor,
+    prefDoctor: !req.body.prefDoctor || req.body.prefDoctor === 'none' ? undefined : req.body.prefDoctor,
     serviceType: req.body.serviceType,
     prefContactMethod: req.body.prefContactMethod
   };
 
-  const patientExists = await patientModel.count({_id: payload.patientId});
-  switch (patientExists) {
-    case 1:
-      await appointmentModel.create(payload)
-        .then(doc => res.send(doc._id))
-        .catch(next);
-      break;
-    default:
-      Promise.resolve().then(() => {
-        throw new Error('Invalid record(s) found');
-      }).catch(next);
+  if (!payload.patientId) return res.render('appointment', {resp: responseMsg.unauthenticated});
+
+  const patientExists = await accountModel.findById(payload.patientId).then(d => d);
+  if (patientExists._id) {
+    await appointmentModel.create(payload)
+      .then(() => res.redirect('/invoice'))
+      .catch(() => {
+        res.render('appointment', {resp: responseMsg.internalServerError});
+      });
+  } else {
+    res.render('appointment', {resp: responseMsg.unauthenticated});
   }
 };

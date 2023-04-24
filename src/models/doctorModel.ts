@@ -20,7 +20,7 @@ const doctorSchema = new Schema({
   firstName: {type: String},
   lastName: {type: String},
   dob: {type: Date},
-  patients: [{type: Schema.Types.ObjectId, ref: 'Patient'}]
+  patients: [{type: Schema.Types.ObjectId, ref: 'Account'}]
 });
 
 // Add data encryption to Password before save operations

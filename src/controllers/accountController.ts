@@ -13,7 +13,7 @@ export const register = async (req, res) => {
     address: req.body.address
   };
 
-  await accountModel.create(payload).then(resp => {
+  await accountModel.create(payload).then(() => {
     res.redirect('login');
   }).catch(err => {
     res.render('register', {resp: err});

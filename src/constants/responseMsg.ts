@@ -9,5 +9,6 @@ export const responseMsg = {
   bookingNotFound: "No booking information found",
   insertFailed: "Failed to insert records",
   internalServerError: "Internal Server Error. Please try again later.",
-  invalidPhone: 'Invalid phone number'
+  invalidPhone: 'Invalid phone number',
+  unauthenticated: "Please login first"
 };
