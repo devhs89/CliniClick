@@ -1,0 +1,120 @@
+<html lang="en">
+<!--HEADER-->
+<head>
+  <%- include('layouts/header'); %>
+  <title><%= locals.docTitle || 'CliniClick'; %></title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+<!--NAVBAR-->
+<%- include('layouts/navbar') %>
+<!--MAIN CONTENT-->
+<main class="flex-grow-1">
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-12 mb-4"><h1 class="display-5">Appointment</h1></div>
+    </div>
+    <% if (locals?.resp) { %>
+      <div class="row text-start">
+        <div class="col-12 mb-3">
+          <div id="feedback-wrapper" class="w-100 text-start py-2 px-3 text-bg-dark rounded">
+              <span class="mb-1"><i
+                    class="fa-solid fa-hand-point-right me-2"></i><%= locals.resp %></span>
+          </div>
+        </div>
+      </div>
+    <% } %>
+    <div id="appointmentFormWrapper">
+      <form method="post" action="/appointment">
+        <div class="row">
+          <div class="col-12 mb-2"><h5>Booking Details</h5></div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-6 mb-3">
+            <div class="input-group">
+              <label for="bookingDate" class="input-group-text">Date</label>
+              <input type="datetime-local" name="bookingDate" id="bookingDate" class="form-control" required>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 mb-3">
+            <div class="input-group">
+              <label for="healthCard" class="input-group-text">Health Card</label>
+              <select name="healthCard" id="healthCard" class="form-select" required>
+                <option value="alberta">Alberta Health</option>
+                <option value="british_columbia">British Columbia Health</option>
+                <option value="manitoba">Manitoba Health</option>
+                <option value="ontario">Ontario Health</option>
+                <option value="saskatchewan">Saskatchewan Health</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-6 mb-3">
+            <div class="input-group">
+              <label for="clinic" class="input-group-text">Clinic</label>
+              <select name="clinic" id="clinic" class="form-select" required>
+                <option value="" disabled readonly selected aria-selected="true">Select one</option>
+                <% if (locals.facilities) { %>
+                  <% const fDocs = JSON.parse(locals.facilities) %>
+                  <% fDocs.forEach(d=> { %>
+                    <option
+                        value="<%= d._id %>"><%= d.name %></option>
+                    }
+                  <% }) %>
+                <% } %>
+              </select>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 mb-3">
+            <div class="input-group">
+              <label for="prefDoctor" class="input-group-text">Preferred Doctor</label>
+              <select name="prefDoctor" id="prefDoctor" class="form-select" required>
+                <option value="none" selected aria-selected="true">No preference</option>
+                <% if (locals.doctors) { %>
+                  <% const dDocs = JSON.parse(locals.doctors) %>
+                  <% dDocs.forEach(d=> { %>
+                    <option
+                        value="<%= d._id %>"><%= d.firstName %> <%= d.lastName %></option>
+                    }
+                  <% }) %>
+                <% } %>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-6 mb-3">
+            <div class="input-group">
+              <label for="serviceType" class="input-group-text">Service Type</label>
+              <select name="serviceType" id="serviceType" class="form-select" required>
+                <option value="video" selected>Video Consultation</option>
+                <option value="phone">Phone Consultation</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 mb-3">
+            <div class="input-group">
+              <label for="prefContactMethod" class="input-group-text">Preferred Contact</label>
+              <select name="prefContactMethod" id="prefContactMethod" class="form-select" required>
+                <option value="email" selected>Email</option>
+                <option value="phone">Phone</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" class="btn btn-lg btn-dark px-4 appointmentBookBtn"
+                    id="appointmentBookBtn" name="appointmentBookBtn" value="<%= locals.session?.userId; %>">Book
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+<!--FOOTER-->
+<%- include('layouts/footer') %>
+</body>
+</html>
